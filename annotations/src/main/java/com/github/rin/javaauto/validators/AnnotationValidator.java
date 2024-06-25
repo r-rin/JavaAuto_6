@@ -45,7 +45,9 @@ public class AnnotationValidator {
                             "MinValue annotation can only be applied to int: "
                             + field.getName());
                 }
+                field.setAccessible(true);
                 int value = field.getInt(obj);
+                field.setAccessible(false);
                 MinValue annotation = field.getAnnotation(MinValue.class);
                 if (value < annotation.value()) {
                     throw new ValidationException(
