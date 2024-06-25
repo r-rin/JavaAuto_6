@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    implementation project(':web-core')
+    implementation project(':annotations')
+}
+
+tasks.register("createTestBooks") {
+    def testDataFile = file("${projectDir}/src/main/resources/testData.txt")
+    def testDataContent = '''The Catcher in the Rye;1951;J.D. Salinger;A story about a young man's adventures
+To Kill a Mockingbird;1960;Harper Lee;A novel about racism and injustice
+1984;1949;George Orwell;Dystopian novel about totalitarian regime
+Moby Dick;1851;Herman Melville;A whaling voyage story
+The Great Gatsby;1925;F. Scott Fitzgerald;A critique of the American Dream'''
+
+    doLast {
+        if (!testDataFile.exists()) {
+            testDataFile.parentFile.mkdirs()
+            testDataFile.text = testDataContent
+            println "testData.txt created with default content."
+        } else {
+            println "testData.txt already exists."
+        }
+    }
+}
+
+processResources.dependsOn("createTestBooks")

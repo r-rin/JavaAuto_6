@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    implementation project(":web-services")
+    implementation project(":web-core")
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.3.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '3.3.0'
+}
+
+tasks.register('copyCommonResources', Copy) {
+    from "${rootProject.projectDir}/common-resources"
+    into "${projectDir}/src/main/resources"
+}
+
+processResources.dependsOn("copyCommonResources")
