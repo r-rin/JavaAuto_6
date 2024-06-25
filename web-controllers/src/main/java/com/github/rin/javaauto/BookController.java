@@ -45,7 +45,8 @@ public class BookController {
      * @return the view name for displaying the book details
      */
     @GetMapping("/view/{id}")
-    public String getBookDetails(@PathVariable("id") final String id, final Model model) {
+    public String getBookDetails(
+            @PathVariable("id") final String id, final Model model) {
         Book book = bookService.getBookById(id);
         model.addAttribute("book", book);
         return "view-book";
