@@ -45,14 +45,9 @@ public class BookController {
      * @return the view name for displaying the book details
      */
     @GetMapping("/view/{id}")
-    public String getBookDetails(@PathVariable("id") String id, Model model) {
-        try {
-            Book book = bookService.getBookById(UUID.fromString(id));
-            model.addAttribute("book", book);
-        } catch (Exception e) {
-            model.addAttribute("book", null);
-        }
-
+    public String getBookDetails(@PathVariable("id") final String id, final Model model) {
+        Book book = bookService.getBookById(id);
+        model.addAttribute("book", book);
         return "view-book";
     }
 

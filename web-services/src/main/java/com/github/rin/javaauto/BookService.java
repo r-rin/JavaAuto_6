@@ -153,7 +153,11 @@ public final class BookService {
      * @param id The UUID of the book to find.
      * @return The book with the specified UUID, or null if not found.
      */
-    public Book getBookById(UUID id) {
-        return findBookByUUID(id);
+    public Book getBookById(final String id) {
+        try {
+            return findBookByUUID(UUID.fromString(id));
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
