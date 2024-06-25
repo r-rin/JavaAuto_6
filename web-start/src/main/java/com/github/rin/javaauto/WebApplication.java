@@ -14,10 +14,13 @@ public class WebApplication {
      *
      * @param args Command line arguments
      */
-    public static void start(final String[] args) {
+    public void start(final String[] args) {
         SpringApplication.run(WebApplication.class, args);
     }
 
-    private WebApplication() { }
+    /**
+     * Main constructor.
+     */
+    public WebApplication() { }
 
 }

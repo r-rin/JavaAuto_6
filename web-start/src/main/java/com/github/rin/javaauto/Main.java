@@ -11,7 +11,8 @@ public class Main {
      * @param args Command line arguments
      */
     public static void main(final String[] args) {
-        WebApplication.start(args);
+        WebApplication app = new WebApplication();
+        app.start(args);
     }
 
     /**

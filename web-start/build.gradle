@@ -4,4 +4,5 @@ plugins {
 
 dependencies {
     implementation project(":web-controllers")
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.3.0'
 }
