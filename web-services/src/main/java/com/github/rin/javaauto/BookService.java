@@ -146,4 +146,14 @@ public final class BookService {
                 .findFirst()
                 .orElse(null);
     }
+
+    /**
+     * Finds a book in the list by its UUID.
+     *
+     * @param id The UUID of the book to find.
+     * @return The book with the specified UUID, or null if not found.
+     */
+    public Book getBookById(UUID id) {
+        return findBookByUUID(id);
+    }
 }

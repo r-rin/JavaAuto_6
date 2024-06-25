@@ -30,7 +30,7 @@
         <th>Author</th>
         <th>Publish Year</th>
         <th>Description</th>
-        <th>Delete</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -46,6 +46,7 @@
                 <input type="hidden" th:name="id" th:value="${book.id}" />
                 <button type="submit">Delete</button>
             </form>
+            <a th:href="@{/books/view/{id}(id=${book.id})}">View</a>
         </td>
     </tr>
     </tbody>

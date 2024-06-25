@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.UUID;
@@ -34,6 +35,25 @@ public class BookController {
         List<Book> books = bookService.getBooks();
         model.addAttribute("books", books);
         return "books-list";
+    }
+
+    /**
+     * Displays detailed information about a specific book.
+     *
+     * @param id    the ID of the book to display
+     * @param model the model to add the book attribute to
+     * @return the view name for displaying the book details
+     */
+    @GetMapping("/view/{id}")
+    public String getBookDetails(@PathVariable("id") String id, Model model) {
+        try {
+            Book book = bookService.getBookById(UUID.fromString(id));
+            model.addAttribute("book", book);
+        } catch (Exception e) {
+            model.addAttribute("book", null);
+        }
+
+        return "view-book";
     }
 
     /**

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .book-details {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .book-details h2 {
+            margin-top: 0;
+        }
+        .book-details p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="book-details">
+    <h2>Book Details</h2>
+    <div th:if="${book}">
+        <p><strong>Title:</strong> <span th:text="${book.title}"></span></p>
+        <p><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+        <p><strong>Publish Year:</strong> <span th:text="${book.publishYear}"></span></p>
+        <p><strong>Description:</strong> <span th:text="${book.description}"></span></p>
+    </div>
+    <div th:unless="${book}">
+        <p>Book not found.</p>
+    </div>
+    <a href="/books" class="btn">Back to Book List</a>
+</div>
+</body>
+</html>
