@@ -13,6 +13,17 @@ allprojects {
 subprojects {
     apply plugin: 'java'
     apply plugin: 'checkstyle'
+
+    dependencies {
+        implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.22.0'
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.2'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 }
 
 checkstyle {
@@ -26,7 +37,7 @@ publishing {
             from components.java
             groupId = 'com.github.rin.javaauto'
             artifactId = 'lab6'
-            version = '1.0'
+            version = '1.1'
         }
     }
     repositories {
@@ -46,5 +57,5 @@ tasks.register('checkstyleCode') {
 }
 
 tasks.register('runTests') {
-    dependsOn subprojects*.tasks*.checkstyleMain
+    dependsOn subprojects*.tasks*.test
 }
