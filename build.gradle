@@ -30,6 +30,12 @@ subprojects {
     test {
         useJUnitPlatform()
     }
+
+    checkstyle {
+        checkstyleTest.enabled = false
+        //ignoreFailures = true
+    }
+
 }
 
 checkstyle {
