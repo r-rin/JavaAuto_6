@@ -33,6 +33,9 @@ jobs:
       - name: Checkstyle code
         run: gradle checkstyleCode
 
+      - uses: browser-actions/setup-chrome@latest
+        run: chrome --version
+
       - name: Build with Gradle
         run: gradle clean build
 
@@ -55,6 +58,9 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+
+      - uses: browser-actions/setup-chrome@latest
+        run: chrome --version
 
       - name: Run tests
         run: gradle test
