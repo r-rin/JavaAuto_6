@@ -160,4 +160,11 @@ public final class BookService {
             return null;
         }
     }
+
+    /**
+     * Method, which clears all data in a list.
+     */
+    public void cleanAll() {
+        books.clear();
+    }
 }

@@ -195,4 +195,9 @@ public class BookServiceTest {
 
         Assertions.assertNull(bookService.getBookById(book.getId().toString()));
     }
+
+    @AfterAll
+    static void cleanAll() {
+        bookService.cleanAll();
+    }
 }
