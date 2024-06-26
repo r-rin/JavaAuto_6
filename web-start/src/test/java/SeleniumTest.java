@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chromium.ChromiumDriver;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -19,7 +21,10 @@ public class SeleniumTest {
 
     @BeforeEach
     void startDriver() {
-        webDriver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+
+        webDriver = new ChromeDriver(options);
     }
 
     @Test
